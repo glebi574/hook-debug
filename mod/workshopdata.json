@@ -1,6 +1,6 @@
 {
   "Title": "Hook Debug",
-  "Description": "Technical mod that tells you what hooks are applied by what and what assemblies are loaded in a neat little file.\r\n\r\nFile location: \u003CRain World installation\u003E/HookDebug.txt",
+  "Description": "Technical mod that tells you what hooks are applied by what and what assemblies are loaded in a neat little file.\r\n\r\nFile location: \u003CRain World installation\u003E/HookDebug.txt\r\n\r\nGitHub: https://github.com/alduris/hook-debug",
   "ID": "alduris.hookdebug",
   "Version": "1.0.0",
   "TargetGameVersion": "v1.9.15b",
@@ -12,6 +12,6 @@
     "Tools"
   ],
   "WorkshopID": 3414105084,
-  "UploadFilesOnly": false,
+  "UploadFilesOnly": true,
   "UploadThumbnail": false
 }
