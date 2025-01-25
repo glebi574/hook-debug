@@ -7,28 +7,27 @@ using System.Security.Permissions;
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
 #pragma warning restore CS0618
 
-namespace TestMod;
+namespace HookDebug;
 
-[BepInPlugin("com.author.testmod", "Test Mod", "0.1.0")]
+[BepInPlugin("alduris.hookdebug", "Hook Debug", "1.0.0")]
 sealed class Plugin : BaseUnityPlugin
 {
     public static new ManualLogSource Logger;
-    bool IsInit;
 
     public void OnEnable()
     {
         Logger = base.Logger;
-        On.RainWorld.OnModsInit += OnModsInit;
+        On.ProcessManager.ActualProcessSwitch += ProcessManager_ActualProcessSwitch;
     }
 
-    private void OnModsInit(On.RainWorld.orig_OnModsInit orig, RainWorld self)
+    private void ProcessManager_ActualProcessSwitch(On.ProcessManager.orig_ActualProcessSwitch orig, ProcessManager self, ProcessManager.ProcessID ID, float fadeOutSeconds)
     {
-        orig(self);
+        orig(self, ID, fadeOutSeconds);
 
-        if (IsInit) return;
-        IsInit = true;
-
-        // Initialize assets, your mod config, and anything that uses RainWorld here
-        Logger.LogDebug("Hello world!");
+        try
+        {
+            //
+        }
+        catch { }
     }
 }
