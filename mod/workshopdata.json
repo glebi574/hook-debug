@@ -1,0 +1,17 @@
+{
+  "Title": "Hook Debug",
+  "Description": "Technical mod that tells you what hooks are applied by what and what assemblies are loaded in a neat little file.\r\n\r\nFile location: \u003CRain World installation\u003E/HookDebug.txt",
+  "ID": "alduris.hookdebug",
+  "Version": "1.0.0",
+  "TargetGameVersion": "v1.9.15b",
+  "Requirements": "",
+  "RequirementNames": "",
+  "Authors": "Alduris",
+  "Visibility": "Public",
+  "Tags": [
+    "Tools"
+  ],
+  "WorkshopID": 3414105084,
+  "UploadFilesOnly": false,
+  "UploadThumbnail": false
+}

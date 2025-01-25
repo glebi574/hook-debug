@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "authors": "Alduris",
   "description": "Technical mod to spew out as much debug information as possible about any and all hooks that happen to be applied.",
-  "tags": [],
+  "tags": ["Tools"],
   "requirements": [],
   "requirements_names": [],
   "checksum_override_version": false
