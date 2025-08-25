@@ -1,11 +1,11 @@
 ﻿{
   "id": "alduris.hookdebug",
   "name": "Hook Debug",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": "Alduris",
   "description": "Technical mod to spew out as much debug information as possible about any and all hooks that happen to be applied.",
   "tags": ["Tools"],
-  "requirements": [],
-  "requirements_names": [],
+  "requirements": ["0gelbi.silly-lib"],
+  "requirements_names": ["gelbi's Silly Lib"],
   "checksum_override_version": false
 }

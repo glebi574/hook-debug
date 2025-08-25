@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>gelbi-silly-lib-preloader</name>
+    </assembly>
+    <members>
+        <member name="T:gelbi_silly_lib.RuntimeDetourManagerInternal">
+            <summary>
+            Tracks all hooks(automatically untracks internal detours)
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.RuntimeDetourManagerInternal.hookLists">
+            <summary>
+            Hooks per assembly
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.RuntimeDetourManagerInternal.hookMaps">
+            <summary>
+            Hooks per hooked method
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.RuntimeDetourManagerInternal.Update">
+            <summary>
+            Removes invalid hooks
+            </summary>
+        </member>
+    </members>
+</doc>

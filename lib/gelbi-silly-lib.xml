@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>gelbi-silly-lib</name>
+    </assembly>
+    <members>
+        <member name="F:gelbi_silly_lib.FileUtils.Result.NoDirectory">
+            <summary>
+            Directory at path [with given search options] doesn't exist
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.FileUtils.Result.Success">
+            <summary>
+            Files [with given search options] exist and were successfully retrieved
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.FileUtils.Result.NoFiles">
+            <summary>
+            Directory at path [with given search options] exists, but doesn't contain any files
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.FileUtils.Result.NoFilesWithExtension">
+            <summary>
+            Directory at path [with given search options] exists, but doesn't contain any files with required extension
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.FileUtils.ListDirectory(System.String,gelbi_silly_lib.FileUtils.Result@,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Lists all files/directories in directory(and/or its original directory in mod) at <paramref name="path"/>
+            <para>Basically a copy of <see cref="M:AssetManager.ListDirectory(System.String,System.Boolean,System.Boolean,System.Boolean)"/> with more info about result</para>
+            </summary>
+            <param name="path">Path of directory to list</param>
+            <param name="opResult">Result code</param>
+            <param name="directories">If <c>true</c>, all directories will be listed instead of files</param>
+            <param name="includeDuplicates">If <c>true</c>, duplicates, such as if directory is introduced by mod and copied to mergedmods, will be included</param>
+            <param name="moddedOnly">If <c>true</c>, only mod directories will be included</param>
+            <returns></returns>
+        </member>
+        <member name="M:gelbi_silly_lib.FileUtils.ListDirectory(System.String,gelbi_silly_lib.FileUtils.Result@,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Lists all files/directories in directory(and/or its original directory in mod) at <paramref name="path"/>, that have specified <paramref name="extension"/> 
+            </summary>
+            <param name="path">Path of directory to list</param>
+            <param name="opResult">Result code</param>
+            <param name="extension"></param>
+            <param name="includeDuplicates">If <c>true</c>, duplicates, such as if directory is introduced by mod and copied to mergedmods, will be included</param>
+            <param name="moddedOnly">If <c>true</c>, only mod directories will be included</param>
+            <returns></returns>
+        </member>
+        <member name="T:gelbi_silly_lib.Converter.Extensions">
+            <summary>
+            Converter extensions mainly for JSON reading
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.Other.Extensions.AddOrCreateWith``2(System.Collections.Generic.Dictionary{``0,System.Collections.Generic.List{``1}},``0,``1)">
+            <summary>
+            Adds element to list at given key or creates list, containing that element
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.Other.Extensions.AddUnique``1(System.Collections.Generic.List{``0},``0)">
+            <summary>
+            Adds item to the list if it isn't present already
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.Other.Extensions.GetFullName(ModManager.Mod)">
+            <summary>
+            Returns string with mod's name, id and version
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.Other.Extensions.ContainsMod(System.Collections.Generic.IEnumerable{ModManager.Mod},ModManager.Mod)">
+            <summary>
+            Checks if container has mod
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.GSLUtils.modAssemblyCache">
+            <summary>
+            Loaded assemblies, defined per mod
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.GSLUtils.assemblyOwnerCache">
+            <summary>
+            Dictionary with mods, defining specific assembly
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.GSLUtils.LogAssemblies">
+            <summary>
+            Logs all loaded assemblies in current domain
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.HighPriorityMods">
+            <summary>
+            Mod IDs added to it would be automatically sorted to the bottom of mod list
+            <para>Doesn't do much, but makes Remix Menu look silly</para>
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.ReflectionValueUtils.Extensions">
+            <summary>
+            Extensions for Reflection, optimizing getting/setting/invoking
+            <para>Separated into their own namespace for being annoying</para>
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionValueUtils.Extensions.GetFieldValue(System.Object,System.String)">
+            <summary>
+            Returns value of field in provided instance
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionValueUtils.Extensions.SetFieldValue(System.Object,System.String,System.Object)">
+            <summary>
+            Sets value of field in provided instance
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionValueUtils.Extensions.InvokeStaticMethod(System.Object,System.String,System.Object[])">
+            <summary>
+            Invokes method in provided instance
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionValueUtils.Extensions.GetStaticFieldValue(System.Type,System.String)">
+            <summary>
+            Returns value of static field in provided type
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionValueUtils.Extensions.SetStaticFieldValue(System.Type,System.String,System.Object)">
+            <summary>
+            Sets value of static field in provided type
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionValueUtils.Extensions.InvokeStaticMethod(System.Type,System.String,System.Object[])">
+            <summary>
+            Invokes static method in provided type
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.ReflectionUtils.Extensions">
+            <summary>
+            Extensions for Reflection
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionUtils.Extensions.GetTypesSafe(System.Reflection.Assembly)">
+            <summary>
+            Returns types, defined by assembly. May throw less, than default version
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionUtils.Extensions.GetFieldsSafe(System.Type,System.Reflection.BindingFlags)">
+            <summary>
+            Returns types, defined by assembly. May throw less, than default version
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionUtils.Extensions.RunClassConstructor(System.Type)">
+            <summary>
+            Calls <c>cctor</c> of provided type
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionUtils.Extensions.InheritsGenericType(System.Type,System.Type)">
+            <summary>
+            Checks if type inherits other generic type
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionUtils.Extensions.GetSimpleName(System.Type)">
+            <summary>
+            Returns type definition similar to how it'd be initially written in c# (doesn't append ref/out)
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionUtils.Extensions.GetSimpleName(System.Reflection.FieldInfo)">
+            <summary>
+            Returns field definition similar to how it'd be written in c#
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionUtils.Extensions.GetSimpleName(System.Reflection.MethodInfo)">
+            <summary>
+            Returns method definition similar to how it'd be written in c#
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionUtils.Extensions.GetSimpleName(System.Reflection.ConstructorInfo)">
+            <summary>
+            Returns method definition similar to how it'd be written in c#
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ReflectionUtils.Extensions.GetSimpleName(System.Reflection.MethodBase)">
+            <summary>
+            Returns method definition similar to how it'd be written in c#
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.BepInExUtils.Extensions">
+            <summary>
+            Extensions for some BepInEx features
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.BepInExUtils.Extensions.HasPluginClasses(System.Reflection.Assembly)">
+            <summary>
+            Checks whether assembly defines BaseUnityPlugin classes
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.BepInExUtils.Extensions.HasPluginClassesSafe(System.Reflection.Assembly)">
+            <summary>
+            Checks safely whether assembly defines BaseUnityPlugin classes
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.BepInExUtils.Extensions.GetPluginClasses(System.Reflection.Assembly)">
+            <summary>
+            Returns BaseUnityPlugin classes, defined in this assembly
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.BepInExUtils.Extensions.GetPluginClassesSafe(System.Reflection.Assembly)">
+            <summary>
+            Returns BaseUnityPlugin classes, defined in this assembly safely... aaaaaaaa
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.ModManagerUtils.Extensions">
+            <summary>
+            Extensions for Mod/Assembly interactions
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ModManagerUtils.Extensions.GetMainModAssembly(System.Reflection.Assembly)">
+            <summary>
+            Returns main assembly, containing plugin class, in same folder of dll, defining this assembly.
+            Will return this assembly, if there's too little dlls in that folder
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ModManagerUtils.Extensions.GetDefiningMod(System.Reflection.Assembly)">
+            <summary>
+            Returns mod, containing this assembly, if one exists
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ModManagerUtils.Extensions.GetAssemblies(ModManager.Mod)">
+            <summary>
+            Returns assemblies, defined by that mod
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ModManagerUtils.Extensions.GetSimpleName(ModManager.Mod)">
+            <summary>
+            Returns simple mod nameplate
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ModManagerUtils.Extensions.GetSimplePluginName(System.Type)">
+            <summary>
+            Returns simple mod nameplate, based on type
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ModManagerUtils.Extensions.GetFullPluginName(System.Type)">
+            <summary>
+            Returns full mod nameplate, including information from both remix mod and type
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ModManagerUtils.Extensions.GetSimplePluginName(System.Reflection.Assembly)">
+            <summary>
+            Returns plugin information from all plugin classes in assembly
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.ModManagerUtils.Extensions.GetFullPluginName(System.Reflection.Assembly)">
+            <summary>
+            Returns extended plugin information from all plugin classes in assembly
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.MonoModUtils.Extensions">
+            <summary>
+            Extensions for different hook/il related methods
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.MonoModUtils.Extensions.GetTarget(MonoMod.RuntimeDetour.IDetour)">
+            <summary>
+            Returns target method
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.MonoModUtils.Extensions.GetAssembly(MonoMod.RuntimeDetour.IDetour)">
+            <summary>
+            Returns target's assembly. Will return `null` for internal detours.
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.MonoModUtils.Extensions.GetSimpleTargetName(MonoMod.RuntimeDetour.IDetour)">
+            <summary>
+            Returns target method definition similar to how it'd be written in c#
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.MonoModUtils.Extensions.LogBody(MonoMod.Cil.ILContext)">
+            <summary>
+            Logs body of IL hook
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.BFlags">
+            <summary>
+            Some common binding flags
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.BFlags.any">
+            <summary>
+            <c>static / not static / private / public</c>
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.BFlags.anyStatic">
+            <summary>
+            <c>static / private / public</c>
+            </summary>
+        </member>
+        <member name="F:gelbi_silly_lib.BFlags.anyInstance">
+            <summary>
+            <c>not static / private / public</c>
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.HookEndpointManagerUtils">
+            <summary>
+            HoodEndpointManager related methods. HoodEndpointManager automatically tracks all but manual hooks
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.HookEndpointManagerUtils.GetHookLists">
+            <summary>
+            Returns hook lists, managed by HookEndpointManager
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.HookEndpointManagerUtils.GetHookMaps">
+            <summary>
+            Returns hook maps, managed by HookEndpointManager
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.HookEndpointManagerUtils.GetHookList(System.Reflection.Assembly)">
+            <summary>
+            Returns hook list, managed by HookEndpointManager and assigned to given assembly
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.HookEndpointManagerUtils.LogHookList(System.Collections.IList,System.String)">
+            <summary>
+            Logs hook list, managed by HookEndpointManager
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.HookEndpointManagerUtils.LogAllHookLists">
+            <summary>
+            Logs all hooks, managed by HookEndpointManager, by defining assembly
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.HookEndpointManagerUtils.LogHookMap(System.Collections.Generic.Dictionary{System.Delegate,System.Collections.Generic.Stack{MonoMod.RuntimeDetour.IDetour}},System.String)">
+            <summary>
+            Logs hooks, managed by HookEndpointManager, by hooked method
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.HookEndpointManagerUtils.LogHookMap(System.Reflection.MethodInfo,System.String)">
+            <summary>
+            Logs hook map, managed by HookEndpointManager and assigned to given method
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.HookEndpointManagerUtils.LogAllHookMaps">
+            <summary>
+            Logs all hook maps, managed by HookEndpointManager
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.IEnumerableUtils.Extensions">
+            <summary>
+            Some additions to IEnumerable methods
+            </summary>
+        </member>
+        <member name="T:gelbi_silly_lib.RuntimeDetourManager">
+            <summary>
+            Tracks all hooks(automatically untracks internal detours)
+            </summary>
+        </member>
+        <member name="P:gelbi_silly_lib.RuntimeDetourManager.HookLists">
+            <summary>
+            Hooks per assembly
+            </summary>
+        </member>
+        <member name="P:gelbi_silly_lib.RuntimeDetourManager.HookMaps">
+            <summary>
+            Hooks per hooked method
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.RuntimeDetourManager.Update">
+            <summary>
+            Removes invalid hooks
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.RuntimeDetourManager.LogAllHookLists">
+            <summary>
+            Logs all hooks by defining assembly
+            </summary>
+        </member>
+        <member name="M:gelbi_silly_lib.RuntimeDetourManager.LogAllHookMaps">
+            <summary>
+            Logs all hooks by hooked method
+            </summary>
+        </member>
+    </members>
+</doc>

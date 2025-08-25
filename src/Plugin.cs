@@ -1,7 +1,9 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using gelbi_silly_lib;
+using gelbi_silly_lib.MonoModUtils;
+using gelbi_silly_lib.ReflectionUtils;
 using MonoMod.RuntimeDetour;
-using MonoMod.RuntimeDetour.HookGen;
 using RWCustom;
 using System;
 using System.Collections.Generic;
@@ -19,7 +21,9 @@ using System.Text.RegularExpressions;
 
 namespace HookDebug;
 
-[BepInPlugin("alduris.hookdebug", "Hook Debug", "1.0.0")]
+
+[BepInDependency("0gelbi.silly-lib", BepInDependency.DependencyFlags.HardDependency)]
+[BepInPlugin("alduris.hookdebug", "Hook Debug", "1.0.1")]
 sealed class Plugin : BaseUnityPlugin
 {
     public static new ManualLogSource Logger;
@@ -40,14 +44,6 @@ sealed class Plugin : BaseUnityPlugin
         var filePath = Path.Combine(Custom.LegacyRootFolderDirectory(), "HookDebug.txt");
         try
         {
-            // Grab all hooks
-            Dictionary<MethodBase, Dictionary<Delegate, Stack<IDetour>>> hookMap = [];
-            Dictionary<MethodBase, object> hookEndpointMap = (Dictionary<MethodBase, object>)typeof(HookEndpointManager).GetField("HookEndpointMap", BindingFlags.Static | BindingFlags.NonPublic).GetValue(null);
-            foreach (var kvp in hookEndpointMap)
-            {
-                hookMap.Add(kvp.Key, ModManager.GetHookMap(kvp.Key));
-            }
-
             // Grab all assemblies
             bool successfulLoadedAssemblies = true;
             Dictionary<string, string> loadedAssemblyStrings = [];
@@ -66,7 +62,7 @@ sealed class Plugin : BaseUnityPlugin
             }
 
             // Order the thingies
-            var sortedList = hookMap.OrderBy(x => x.Key.DeclaringType.Namespace).ThenBy(x => x.Key.DeclaringType.Name).ThenBy(x => x.Key.Name).ToList(); // scary type (you do not want to know)
+            var sortedList = RuntimeDetourManager.HookMaps.OrderBy(x => x.Key.DeclaringType.Namespace).ThenBy(x => x.Key.DeclaringType.Name).ThenBy(x => x.Key.Name).ToList(); // scary type (you do not want to know) [nah]
             List<string> sortedAsses = loadedAssemblyStrings.OrderBy(x => x.Key).Select(x => x.Value).ToList(); // not scary type
 
             // Generate the output string
@@ -76,9 +72,9 @@ sealed class Plugin : BaseUnityPlugin
             foreach (var kvp in sortedList)
             {
                 sb.AppendLine($"{kvp.Key.DeclaringType.FullName}.{kvp.Key.Name}");
-                foreach (var hook in kvp.Value)
+                foreach (IDetour detour in kvp.Value)
                 {
-                    sb.AppendLine($"    ({string.Join(", ", hook.Value.Select(x => x.GetType().Name))}) {hook.Key.Method.DeclaringType.FullName}.{hook.Key.Method.Name}");
+                    sb.AppendLine($"    ({detour.GetType().Name}) {detour.GetTarget().DeclaringType.FullName}.{detour.GetTarget().Name}");
                 }
                 sb.AppendLine();
             }
